@@ -1,0 +1,8 @@
+{
+  // Name => [ignored pairings]
+  "Tom": ["George"], 
+  "Harry": [],
+  "George": ["Tom"],
+  "Sarah": [],
+  "Bill": ["Sarah", "Harry"]
+}
