@@ -18,12 +18,16 @@ FileUtils.mkdir_p(output_folder)
 for sender in senders do
   index = rand(recipients.length)
   recipient = recipients[index]
+  loop_watch_dog = 0;
+  while (names[sender].include?(recipient) || recipient == sender) && loop_watch_dog < 10 do
+    puts "#{sender} => #{recipient} | Selecting new recipient..."
     if recipients.size == 1
       raise RuntimeError.new("Loop detected - please try again")
     end
 
     index = rand(recipients.length)
     recipient = recipients[index]
+    loop_watch_dog += 1
   end
   # Write the file to the outputs folder
   file_path = File.join(output_folder, "#{sender}.txt")
@@ -31,3 +35,4 @@ for sender in senders do
 
   recipients.delete(recipient)
 end
+
